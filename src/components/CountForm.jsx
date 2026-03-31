@@ -1,15 +1,13 @@
 import { useState } from "react";
 
-const COUNT_TYPES = [
-  { value: "individual_boxes", label: "Individual Boxes" },
-  { value: "pallets", label: "Pallets" },
-  { value: "partial_pallets", label: "Partial Pallets" },
-  { value: "flow_wrap_rolls", label: "Flow Wrap Rolls" },
-  { value: "flow_wrap_ft", label: "Flow Wraps Ft" },
-  { value: "flow_wrap_pallet", label: "Flow Wrap Pallets" },
-];
+import {
+  COUNT_TYPES,
+  getHelperText,
+  getQuantityLabel,
+  getQuantityPlaceholder,
+} from "../helpers/countFormHelpers";
 
-function CountForm({ onAddEntry }) {
+function CountForm({ onAddEntry, countMode }) {
   const [selectedType, setSelectedType] = useState("individual_boxes");
   const [quantity, setQuantity] = useState("");
   const [batch, setBatch] = useState("");
@@ -67,7 +65,7 @@ function CountForm({ onAddEntry }) {
               htmlFor="quantity"
               className="mb-1 block text-sm font-medium text-slate-700"
             >
-              Quantity
+              {getQuantityLabel(selectedType, countMode)}
             </label>
             <input
               id="quantity"
@@ -76,11 +74,13 @@ function CountForm({ onAddEntry }) {
               step="any"
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
-              placeholder="Enter quantity"
+              placeholder={getQuantityPlaceholder(selectedType, countMode)}
               className="w-full rounded-xl border border-slate-300 px-3 py-2 text-slate-900 outline-none focus:border-slate-400"
             />
           </div>
-
+          <p className="mt-1 text-xs text-slate-500">
+            {getHelperText(selectedType, countMode)}
+          </p>
           <div>
             <label
               htmlFor="batch"

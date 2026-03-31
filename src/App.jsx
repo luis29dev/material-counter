@@ -26,7 +26,7 @@ export default function App() {
             countMode={countMode}
             onChangeCountMode={setCountMode}
           />
-          <CountForm onAddEntry={handleAddEntry} />
+          <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
           <EntryList entries={entries} onDeleteEntry={handleDeleteEntry} />
         </section>
       </main>
