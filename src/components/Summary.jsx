@@ -1,0 +1,51 @@
+import { getBatchSummary, getGrandTotal } from "../helpers/summaryHelpers";
+
+export default function Summary({ entries, countMode }) {
+  const batchSummary = getBatchSummary(entries, countMode);
+  const grandTotal = getGrandTotal(entries, countMode);
+
+  const unitLabel = countMode === "trays" ? "trays" : "bags";
+
+  return (
+    <section className="rounded-2xl bg-white p-4 shadow-sm">
+      <h2 className="text-lg font-semibold text-slate-900">Summary</h2>
+      <p className="mt-1 text-sm text-slate-600">
+        Review total {unitLabel} by batch and overall.
+      </p>
+
+      {entries.length === 0 ? (
+        <p className="mt-4 text-sm text-slate-500">
+          No entries yet. Add entries to see the summary.
+        </p>
+      ) : (
+        <>
+          <div className="mt-4 space-y-3">
+            {batchSummary.map((group) => (
+              <div
+                key={group.batch}
+                className="rounded-xl border border-slate-200 p-3"
+              >
+                <p className="text-sm font-semibold text-slate-900">
+                  Batch: {group.batch}
+                </p>
+
+                <p className="mt-1 text-sm text-slate-600">
+                  Total {unitLabel}:{" "}
+                  <span className="font-medium">{group.total}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-xl bg-slate-50 p-4">
+            <p className="text-sm font-semibold text-slate-900">Grand total</p>
+            <p className="mt-2 text-sm text-slate-600">
+              Total {unitLabel}:{" "}
+              <span className="font-medium">{grandTotal}</span>
+            </p>
+          </div>
+        </>
+      )}
+    </section>
+  );
+}

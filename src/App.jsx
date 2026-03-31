@@ -3,6 +3,7 @@ import CountForm from "./components/CountForm";
 import Header from "./components/Header";
 import EntryList from "./components/EntryList";
 import CountModeSelector from "./components/CountModeSelector";
+import Summary from "./components/Summary";
 
 export default function App() {
   const [entries, setEntries] = useState([]);
@@ -30,6 +31,7 @@ export default function App() {
           <EntryList entries={entries} onDeleteEntry={handleDeleteEntry} />
         </section>
       </main>
+      <Summary entries={entries} countMode={countMode} />
     </div>
   );
 }
