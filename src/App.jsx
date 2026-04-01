@@ -13,25 +13,29 @@ export default function App() {
     setEntries((currentEntries) => [newEntry, ...currentEntries]);
     console.log("New entry added:", newEntry);
   }
+
   function handleDeleteEntry(entryId) {
     setEntries((currentEntries) =>
       currentEntries.filter((entry) => entry.id !== entryId),
     );
   }
+
   return (
     <div className="min-h-screen bg-slate-50">
       <Header />
-      <main className="mx-auto max-w-3xl px-4 py-6">
-        <section className="rounded-2xl bg-white p-4 shadow-sm">
-          <CountModeSelector
-            countMode={countMode}
-            onChangeCountMode={setCountMode}
-          />
-          <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
-          <EntryList entries={entries} onDeleteEntry={handleDeleteEntry} />
-        </section>
+
+      <main className="mx-auto flex max-w-3xl flex-col gap-6 px-4 py-6">
+        <CountModeSelector
+          countMode={countMode}
+          onChangeCountMode={setCountMode}
+        />
+
+        <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
+
+        <EntryList entries={entries} onDeleteEntry={handleDeleteEntry} />
+
+        <Summary entries={entries} countMode={countMode} />
       </main>
-      <Summary entries={entries} countMode={countMode} />
     </div>
   );
 }
