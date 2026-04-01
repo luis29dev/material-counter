@@ -34,7 +34,7 @@ function CountForm({ onAddEntry, countMode }) {
   }
   return (
     <div>
-      <section>
+      <section className="">
         <h2 className="text-lg font-semibold text-slate-900">Add Count</h2>
         <p className="mt-1 text-sm text-slate-600">
           Select a count type, enter a quantity, and optionally add a batch.
@@ -100,7 +100,7 @@ function CountForm({ onAddEntry, countMode }) {
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
+            className="w-full rounded-xl bg-emerald-900 hover:bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
           >
             Add entry
           </button>

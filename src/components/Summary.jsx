@@ -37,8 +37,10 @@ export default function Summary({ entries, countMode }) {
             ))}
           </div>
 
-          <div className="mt-6 rounded-xl bg-slate-50 p-4">
-            <p className="text-sm font-semibold text-slate-900">Grand total</p>
+          <div className="mt-6 rounded-xl bg-blue-50 p-4">
+            <p className="text-sm font-semibold text-emerald-900">
+              Grand total
+            </p>
             <p className="mt-2 text-sm text-slate-600">
               Total {unitLabel}:{" "}
               <span className="font-medium">{grandTotal}</span>
