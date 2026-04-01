@@ -1,3 +1,5 @@
+import { formatNumber } from "../helpers/formatHelpers";
+
 const TYPE_LABELS = {
   individual_boxes: "Individual Boxes",
   pallets: "Pallets",
@@ -36,7 +38,9 @@ function EntryList({ entries, onDeleteEntry }) {
 
                   <p className="mt-1 text-sm text-slate-600">
                     Quantity:{" "}
-                    <span className="font-medium">{entry.quantity}</span>
+                    <span className="font-medium">
+                      {formatNumber(entry.quantity)}
+                    </span>
                   </p>
 
                   <p className="mt-1 text-sm text-slate-600">

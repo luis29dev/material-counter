@@ -1,4 +1,5 @@
 import { getBatchSummary, getGrandTotal } from "../helpers/summaryHelpers";
+import { formatNumber } from "../helpers/formatHelpers";
 
 export default function Summary({ entries, countMode }) {
   const batchSummary = getBatchSummary(entries, countMode);
@@ -31,7 +32,9 @@ export default function Summary({ entries, countMode }) {
 
                 <p className="mt-1 text-sm text-slate-600">
                   Total {unitLabel}:{" "}
-                  <span className="font-medium">{group.total}</span>
+                  <span className="font-medium">
+                    {formatNumber(group.total)}
+                  </span>
                 </p>
               </div>
             ))}
@@ -43,7 +46,7 @@ export default function Summary({ entries, countMode }) {
             </p>
             <p className="mt-2 text-sm text-slate-600">
               Total {unitLabel}:{" "}
-              <span className="font-medium">{grandTotal}</span>
+              <span className="font-medium">{formatNumber(grandTotal)}</span>
             </p>
           </div>
         </>
