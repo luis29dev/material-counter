@@ -9,6 +9,8 @@ export default function App() {
   const [entries, setEntries] = useState([]);
   const [countMode, setCountMode] = useState("trays");
 
+  const isCountModeLocked = entries.length > 0;
+
   function handleAddEntry(newEntry) {
     setEntries((currentEntries) => [newEntry, ...currentEntries]);
     console.log("New entry added:", newEntry);
@@ -19,6 +21,9 @@ export default function App() {
       currentEntries.filter((entry) => entry.id !== entryId),
     );
   }
+  function handleResetCount() {
+    setEntries([]);
+  }
 
   return (
     <div className="min-h-screen bg-slate-50">
@@ -28,6 +33,8 @@ export default function App() {
         <CountModeSelector
           countMode={countMode}
           onChangeCountMode={setCountMode}
+          isLocked={isCountModeLocked}
+          onResetCount={handleResetCount}
         />
 
         <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
