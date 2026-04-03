@@ -29,7 +29,7 @@ export default function App() {
     <div className="min-h-dvh bg-slate-50">
       <Header />
 
-      <main className="mx-auto flex min-h-[70dvh] max-w-3xl flex-col gap-6 px-4 py-6 pb-20">
+      <main className="mx-auto flex min-h-[75dvh] max-w-3xl flex-col gap-6 px-4 py-6 pb-20">
         <CountModeSelector
           countMode={countMode}
           onChangeCountMode={setCountMode}

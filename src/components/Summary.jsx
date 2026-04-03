@@ -15,9 +15,11 @@ export default function Summary({ entries, countMode }) {
       </p>
 
       {entries.length === 0 ? (
-        <p className="mt-4 text-sm text-slate-500">
-          No entries yet. Add entries to see the summary.
-        </p>
+        <div className="mt-4 flex min-h-32 items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50 p-4">
+          <p className="text-center text-sm text-slate-500">
+            No entries yet. Add entries to see the summary.
+          </p>
+        </div>
       ) : (
         <>
           <div className="mt-4 space-y-3">
