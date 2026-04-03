@@ -99,7 +99,7 @@ function CountForm({ onAddEntry, countMode }) {
           </div>
 
           <button
-            type="button"
+            type="submit"
             className="w-full rounded-xl bg-emerald-900 hover:bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800"
           >
             Add entry
