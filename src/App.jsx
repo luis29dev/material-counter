@@ -26,10 +26,10 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-dvh bg-slate-50">
       <Header />
 
-      <main className="mx-auto flex max-w-3xl flex-col gap-6 px-4 py-6">
+      <main className="mx-auto flex max-w-3xl flex-col gap-6 px-4 py-6 pb-10">
         <CountModeSelector
           countMode={countMode}
           onChangeCountMode={setCountMode}
