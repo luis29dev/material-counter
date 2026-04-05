@@ -12,6 +12,7 @@ export default function App() {
   const traysEntries = entries.filter((entry) => entry.countMode === "trays");
 
   const bagsEntries = entries.filter((entry) => entry.countMode === "bags");
+  const butterEntries = entries.filter((entry) => entry.countMode === "butter");
 
   function handleAddEntry(newEntry) {
     setEntries((currentEntries) => [newEntry, ...currentEntries]);
@@ -63,12 +64,24 @@ export default function App() {
           />
         )}
 
+        {butterEntries.length > 0 && (
+          <EntryList
+            entries={butterEntries}
+            onDeleteEntry={handleDeleteEntry}
+            title="Butter Entries"
+          />
+        )}
+
         {traysEntries.length > 0 && (
           <Summary title="Trays Summary" entries={traysEntries} />
         )}
 
         {bagsEntries.length > 0 && (
           <Summary title="Bags Summary" entries={bagsEntries} />
+        )}
+
+        {butterEntries.length > 0 && (
+          <Summary title="Butter Summary" entries={butterEntries} />
         )}
       </main>
     </div>

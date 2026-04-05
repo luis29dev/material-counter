@@ -2,9 +2,9 @@ export const COUNT_TYPES = [
   { value: "individual_boxes", label: "Individual Boxes" },
   { value: "pallets", label: "Pallets" },
   { value: "partial_pallets", label: "Partial Pallets" },
-  { value: "flow_wrap_rolls", label: "Flow Wrap Rolls" },
-  { value: "flow_wrap_ft", label: "Flow Wraps Ft" },
-  { value: "flow_wrap_pallet", label: "Flow Wrap Pallets" },
+  //{ value: "flow_wrap_rolls", label: "Flow Wrap Rolls" },
+  //{ value: "flow_wrap_ft", label: "Flow Wraps Ft" },
+  //{ value: "flow_wrap_pallet", label: "Flow Wrap Pallets" },
 ];
 
 export function getQuantityLabel(selectedType, countMode) {

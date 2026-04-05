@@ -5,9 +5,9 @@ const TYPE_LABELS = {
   individual_boxes: "Individual Boxes",
   pallets: "Pallets",
   partial_pallets: "Partial Pallets",
-  flow_wrap_rolls: "Flow Wrap Rolls",
-  flow_wrap_ft: "Flow Wraps Ft",
-  flow_wrap_pallet: "Flow Wrap Pallets",
+  //flow_wrap_rolls: "Flow Wrap Rolls",
+  //flow_wrap_ft: "Flow Wraps Ft",
+  //flow_wrap_pallet: "Flow Wrap Pallets",
 };
 
 function EntryList({ entries, onDeleteEntry, title = "Entries" }) {
