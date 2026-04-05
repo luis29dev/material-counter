@@ -23,6 +23,14 @@ export default function App() {
     );
   }
   function handleResetCount() {
+    if (entries.length === 0) return;
+
+    const shouldReset = window.confirm(
+      "Are you sure you want to reset the current count? This will remove all entries.",
+    );
+
+    if (!shouldReset) return;
+
     setEntries([]);
   }
 
