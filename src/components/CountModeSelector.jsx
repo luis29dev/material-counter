@@ -38,6 +38,7 @@ export default function CountModeSelector({
         >
           <option value="trays">Trays</option>
           <option value="bags">Bags</option>
+          <option value="butter">Butter</option>
         </select>
 
         <p className="mt-2 text-xs text-slate-500">
