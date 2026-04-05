@@ -10,14 +10,11 @@ const TYPE_LABELS = {
   flow_wrap_pallet: "Flow Wrap Pallets",
 };
 
-function EntryList({ entries, onDeleteEntry, countMode }) {
-  const unitLabel = countMode === "trays" ? "trays" : "bags";
+function EntryList({ entries, onDeleteEntry }) {
   return (
     <section className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-slate-900">
-          {unitLabel} Entries
-        </h2>
+        <h2 className="text-lg font-semibold text-slate-900">Entries</h2>
         <span className="text-sm text-slate-500">
           {entries.length} {entries.length === 1 ? "item" : "items"}
         </span>
@@ -32,7 +29,11 @@ function EntryList({ entries, onDeleteEntry, countMode }) {
       ) : (
         <ul className="mt-4 space-y-3">
           {entries.map((entry) => {
-            const convertedTotal = getConvertedEntryTotal(entry, countMode);
+            const convertedTotal = getConvertedEntryTotal(
+              entry,
+              entry.countMode,
+            );
+            const unitLabel = entry.countMode === "trays" ? "trays" : "bags";
             return (
               <li
                 key={entry.id}
