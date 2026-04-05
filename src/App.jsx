@@ -40,11 +40,19 @@ export default function App() {
         <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
 
         {traysEntries.length > 0 && (
-          <EntryList entries={traysEntries} onDeleteEntry={handleDeleteEntry} />
+          <EntryList
+            entries={traysEntries}
+            onDeleteEntry={handleDeleteEntry}
+            title="Trays Entries"
+          />
         )}
 
         {bagsEntries.length > 0 && (
-          <EntryList entries={bagsEntries} onDeleteEntry={handleDeleteEntry} />
+          <EntryList
+            entries={bagsEntries}
+            onDeleteEntry={handleDeleteEntry}
+            title="Bags Entries"
+          />
         )}
 
         <Summary entries={entries} countMode={countMode} />
