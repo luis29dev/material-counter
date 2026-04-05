@@ -13,14 +13,8 @@ export default function App() {
 
   const bagsEntries = entries.filter((entry) => entry.countMode === "bags");
 
-  console.log("trays:", traysEntries);
-  console.log("bags:", bagsEntries);
-
-  const isCountModeLocked = entries.length > 0;
-
   function handleAddEntry(newEntry) {
     setEntries((currentEntries) => [newEntry, ...currentEntries]);
-    console.log("New entry added:", newEntry);
   }
 
   function handleDeleteEntry(entryId) {
@@ -40,17 +34,26 @@ export default function App() {
         <CountModeSelector
           countMode={countMode}
           onChangeCountMode={setCountMode}
-          isLocked={isCountModeLocked}
           onResetCount={handleResetCount}
         />
 
         <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
 
-        <EntryList
-          entries={entries}
-          onDeleteEntry={handleDeleteEntry}
-          countMode={countMode}
-        />
+        {traysEntries.length > 0 && (
+          <EntryList
+            entries={traysEntries}
+            onDeleteEntry={handleDeleteEntry}
+            countMode="trays"
+          />
+        )}
+
+        {bagsEntries.length > 0 && (
+          <EntryList
+            entries={bagsEntries}
+            onDeleteEntry={handleDeleteEntry}
+            countMode="bags"
+          />
+        )}
 
         <Summary entries={entries} countMode={countMode} />
       </main>

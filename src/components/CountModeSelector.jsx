@@ -1,7 +1,6 @@
 export default function CountModeSelector({
   countMode,
   onChangeCountMode,
-  isLocked,
   onResetCount,
 }) {
   return (
@@ -35,23 +34,15 @@ export default function CountModeSelector({
           id="countMode"
           value={countMode}
           onChange={(e) => onChangeCountMode(e.target.value)}
-          disabled={isLocked}
           className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400"
         >
           <option value="trays">Trays</option>
           <option value="bags">Bags</option>
         </select>
 
-        {isLocked ? (
-          <p className="mt-2 text-xs text-slate-500">
-            Count mode is locked once entries are added. Reset the count to
-            change it.
-          </p>
-        ) : (
-          <p className="mt-2 text-xs text-slate-500">
-            Choose the base unit before adding entries.
-          </p>
-        )}
+        <p className="mt-2 text-xs text-slate-500">
+          This sets the count mode for the next entry you add.
+        </p>
       </div>
     </section>
   );

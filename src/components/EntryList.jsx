@@ -15,7 +15,9 @@ function EntryList({ entries, onDeleteEntry, countMode }) {
   return (
     <section className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-slate-900">Entries</h2>
+        <h2 className="text-lg font-semibold text-slate-900">
+          {unitLabel} Entries
+        </h2>
         <span className="text-sm text-slate-500">
           {entries.length} {entries.length === 1 ? "item" : "items"}
         </span>
