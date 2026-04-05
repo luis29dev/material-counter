@@ -9,6 +9,13 @@ export default function App() {
   const [entries, setEntries] = useState([]);
   const [countMode, setCountMode] = useState("trays");
 
+  const traysEntries = entries.filter((entry) => entry.countMode === "trays");
+
+  const bagsEntries = entries.filter((entry) => entry.countMode === "bags");
+
+  console.log("trays:", traysEntries);
+  console.log("bags:", bagsEntries);
+
   const isCountModeLocked = entries.length > 0;
 
   function handleAddEntry(newEntry) {
