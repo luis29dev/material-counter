@@ -33,7 +33,12 @@ function EntryList({ entries, onDeleteEntry, title = "Entries" }) {
               entry,
               entry.countMode,
             );
-            const unitLabel = entry.countMode === "trays" ? "trays" : "bags";
+            const unitLabel =
+              entry.countMode === "trays"
+                ? "trays"
+                : entry.countMode === "bags"
+                  ? "bags"
+                  : "lbs";
             return (
               <li
                 key={entry.id}

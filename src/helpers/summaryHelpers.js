@@ -1,6 +1,7 @@
 export const UNITS_PER_BOX = {
   trays: 500,
   bags: 1500,
+  butter: 55.115,
 };
 
 export function getConvertedEntryTotal(entry, countMode) {

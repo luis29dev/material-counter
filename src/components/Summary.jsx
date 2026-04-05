@@ -6,7 +6,8 @@ export default function Summary({ entries, title = "Summary" }) {
   const batchSummary = getBatchSummary(entries, countMode);
   const grandTotal = getGrandTotal(entries, countMode);
 
-  const unitLabel = countMode === "trays" ? "trays" : "bags";
+  const unitLabel =
+    countMode === "trays" ? "trays" : countMode === "bags" ? "bags" : "lbs";
 
   return (
     <section className="rounded-2xl bg-white p-4 shadow-sm">
