@@ -1,7 +1,8 @@
 import { getBatchSummary, getGrandTotal } from "../helpers/summaryHelpers";
 import { formatNumber } from "../helpers/formatHelpers";
 
-export default function Summary({ entries, countMode }) {
+export default function Summary({ entries, title = "Summary" }) {
+  const countMode = entries[0]?.countMode ?? "trays";
   const batchSummary = getBatchSummary(entries, countMode);
   const grandTotal = getGrandTotal(entries, countMode);
 
@@ -9,7 +10,7 @@ export default function Summary({ entries, countMode }) {
 
   return (
     <section className="rounded-2xl bg-white p-4 shadow-sm">
-      <h2 className="text-lg font-semibold text-slate-900">Summary</h2>
+      <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
       <p className="mt-1 text-sm text-slate-600">
         Review total {unitLabel} by batch and overall.
       </p>

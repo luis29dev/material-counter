@@ -55,7 +55,13 @@ export default function App() {
           />
         )}
 
-        <Summary entries={entries} countMode={countMode} />
+        {traysEntries.length > 0 && (
+          <Summary title="Trays Summary" entries={traysEntries} />
+        )}
+
+        {bagsEntries.length > 0 && (
+          <Summary title="Bags Summary" entries={bagsEntries} />
+        )}
       </main>
     </div>
   );
