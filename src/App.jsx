@@ -39,7 +39,11 @@ export default function App() {
 
         <CountForm onAddEntry={handleAddEntry} countMode={countMode} />
 
-        <EntryList entries={entries} onDeleteEntry={handleDeleteEntry} />
+        <EntryList
+          entries={entries}
+          onDeleteEntry={handleDeleteEntry}
+          countMode={countMode}
+        />
 
         <Summary entries={entries} countMode={countMode} />
       </main>
