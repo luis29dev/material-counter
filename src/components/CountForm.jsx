@@ -99,7 +99,7 @@ export default function CountForm({ countMode, onAddEntry }) {
 
           <input
             id="batch"
-            type="text"
+            type="number"
             value={batch}
             onChange={(e) => setBatch(e.target.value)}
             placeholder="Enter batch"
