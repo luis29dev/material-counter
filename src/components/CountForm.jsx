@@ -24,6 +24,7 @@ export default function CountForm({ countMode, onAddEntry }) {
       type: selectedType,
       quantity: parsedQuantity,
       batch: trimmedBatch,
+      countMode,
     };
 
     onAddEntry(newEntry);
