@@ -28,15 +28,16 @@ export default function CountForm({ countMode, onAddEntry }) {
 
     const parsedQuantity = Number(quantity);
 
+    const isButterAndPallet =
+      selectedType === "pallets" && countMode === "butter";
+
     if (parsedQuantity <= 0) {
       alert("Quantity must be greater than 0.");
       return;
     }
+    console.log(countMode);
 
-    const requiresInteger =
-      selectedType === "individual_boxes" || selectedType === "partial_pallets";
-
-    if (requiresInteger && !Number.isInteger(parsedQuantity)) {
+    if (!isButterAndPallet && !Number.isInteger(parsedQuantity)) {
       alert("This type requires a whole number (no decimals).");
       return;
     }
