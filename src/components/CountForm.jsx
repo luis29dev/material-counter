@@ -15,9 +15,31 @@ export default function CountForm({ countMode, onAddEntry }) {
     e.preventDefault();
 
     const trimmedBatch = batch.trim();
+    if (trimmedBatch) {
+      const parsedBatch = Number(trimmedBatch);
+
+      if (!Number.isInteger(parsedBatch) || parsedBatch <= 0) {
+        alert("Batch must be a positive whole number.");
+        return;
+      }
+    }
+
+    if (!quantity) return;
+
     const parsedQuantity = Number(quantity);
 
-    if (!quantity || parsedQuantity <= 0) return;
+    if (parsedQuantity <= 0) {
+      alert("Quantity must be greater than 0.");
+      return;
+    }
+
+    const requiresInteger =
+      selectedType === "individual_boxes" || selectedType === "partial_pallets";
+
+    if (requiresInteger && !Number.isInteger(parsedQuantity)) {
+      alert("This type requires a whole number (no decimals).");
+      return;
+    }
 
     const newEntry = {
       id: crypto.randomUUID(),
@@ -76,8 +98,8 @@ export default function CountForm({ countMode, onAddEntry }) {
           <input
             id="quantity"
             type="number"
-            min="0"
-            step="any"
+            min="1"
+            step={selectedType === "pallets" ? "any" : "1"}
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
             placeholder={getQuantityPlaceholder(selectedType, countMode)}
@@ -100,6 +122,8 @@ export default function CountForm({ countMode, onAddEntry }) {
           <input
             id="batch"
             type="number"
+            min="1"
+            step="1"
             value={batch}
             onChange={(e) => setBatch(e.target.value)}
             placeholder="Enter batch"
