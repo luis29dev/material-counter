@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CountForm from "./components/CountForm";
 import Header from "./components/Header";
 import EntryList from "./components/EntryList";
@@ -6,7 +6,22 @@ import CountModeSelector from "./components/CountModeSelector";
 import Summary from "./components/Summary";
 
 export default function App() {
-  const [entries, setEntries] = useState([]);
+ const [entries, setEntries] = useState(() => {
+  const stored = localStorage.getItem("entries");
+
+  try {
+    const parsed = stored ? JSON.parse(stored) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error("Failed to parse entries from localStorage", error);
+    return [];
+  }
+});
+
+  useEffect(() => {
+    localStorage.setItem("entries", JSON.stringify(entries));
+  }, [entries]);
+
   const [countMode, setCountMode] = useState("trays");
 
   const traysEntries = entries.filter((entry) => entry.countMode === "trays");
@@ -31,6 +46,8 @@ export default function App() {
     );
 
     if (!shouldReset) return;
+
+    localStorage.removeItem("entries");
 
     setEntries([]);
   }
