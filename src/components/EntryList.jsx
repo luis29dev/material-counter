@@ -10,7 +10,12 @@ const TYPE_LABELS = {
   //flow_wrap_pallet: "Flow Wrap Pallets",
 };
 
-function EntryList({ entries, onDeleteEntry, title = "Entries" }) {
+function EntryList({
+  entries,
+  onDeleteEntry,
+  title = "Entries",
+  onAdjustPalletCount,
+}) {
   return (
     <section className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
@@ -70,6 +75,35 @@ function EntryList({ entries, onDeleteEntry, title = "Entries" }) {
                       </span>
                     </p>
                   </div>
+                  {entry.type === "pallets" && (
+                    <div className="mt-3">
+                      <p className="mb-2 text-xs font-medium text-slate-700">
+                        Pallets
+                      </p>
+
+                      <div className="inline-flex items-center rounded-xl border border-slate-300 bg-slate-50 shadow-sm">
+                        <button
+                          type="button"
+                          onClick={() => onAdjustPalletCount(entry.id, -1)}
+                          className="flex h-10 w-10 items-center justify-center rounded-l-xl text-lg font-semibold text-slate-700 transition hover:bg-slate-100 active:bg-slate-200"
+                        >
+                          −
+                        </button>
+
+                        <div className="flex min-w-12 items-center justify-center px-3 text-sm font-semibold text-slate-900">
+                          {entry.palletCount ?? 1}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => onAdjustPalletCount(entry.id, 1)}
+                          className="flex h-10 w-10 items-center justify-center rounded-r-xl text-lg font-semibold text-slate-700 transition hover:bg-slate-100 active:bg-slate-200"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                  )}
 
                   <button
                     type="button"

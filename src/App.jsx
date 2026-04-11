@@ -6,17 +6,17 @@ import CountModeSelector from "./components/CountModeSelector";
 import Summary from "./components/Summary";
 
 export default function App() {
- const [entries, setEntries] = useState(() => {
-  const stored = localStorage.getItem("entries");
+  const [entries, setEntries] = useState(() => {
+    const stored = localStorage.getItem("entries");
 
-  try {
-    const parsed = stored ? JSON.parse(stored) : [];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch (error) {
-    console.error("Failed to parse entries from localStorage", error);
-    return [];
-  }
-});
+    try {
+      const parsed = stored ? JSON.parse(stored) : [];
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.error("Failed to parse entries from localStorage", error);
+      return [];
+    }
+  });
 
   useEffect(() => {
     localStorage.setItem("entries", JSON.stringify(entries));
@@ -32,7 +32,21 @@ export default function App() {
   function handleAddEntry(newEntry) {
     setEntries((currentEntries) => [newEntry, ...currentEntries]);
   }
+  function handleAdjustPalletCount(entryId, change) {
+    setEntries((currentEntries) =>
+      currentEntries.map((entry) => {
+        if (entry.id !== entryId || entry.type !== "pallets") return entry;
 
+        const nextPalletCount = Math.max(1, (entry.palletCount ?? 1) + change);
+
+        return {
+          ...entry,
+          palletCount: nextPalletCount,
+          quantity: entry.basePalletQuantity * nextPalletCount,
+        };
+      }),
+    );
+  }
   function handleDeleteEntry(entryId) {
     setEntries((currentEntries) =>
       currentEntries.filter((entry) => entry.id !== entryId),
@@ -70,6 +84,7 @@ export default function App() {
             entries={traysEntries}
             onDeleteEntry={handleDeleteEntry}
             title="Trays Entries"
+            onAdjustPalletCount={handleAdjustPalletCount}
           />
         )}
 
@@ -78,6 +93,7 @@ export default function App() {
             entries={bagsEntries}
             onDeleteEntry={handleDeleteEntry}
             title="Bags Entries"
+            onAdjustPalletCount={handleAdjustPalletCount}
           />
         )}
 
@@ -86,6 +102,7 @@ export default function App() {
             entries={butterEntries}
             onDeleteEntry={handleDeleteEntry}
             title="Butter Entries"
+            onAdjustPalletCount={handleAdjustPalletCount}
           />
         )}
 

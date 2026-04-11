@@ -48,6 +48,8 @@ export default function CountForm({ countMode, onAddEntry }) {
       quantity: parsedQuantity,
       batch: trimmedBatch,
       countMode,
+      palletCount: selectedType === "pallets" ? 1 : null,
+      basePalletQuantity: selectedType === "pallets" ? parsedQuantity : null,
     };
 
     onAddEntry(newEntry);
