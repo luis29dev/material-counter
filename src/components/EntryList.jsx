@@ -75,43 +75,40 @@ function EntryList({
                       </span>
                     </p>
                   </div>
-                  {entry.type === "pallets" && (
-                    <div className="mt-3">
-                      <p className="mb-2 text-xs font-medium text-slate-700">
-                        Pallets
-                      </p>
 
-                      <div className="inline-flex items-center rounded-xl border border-slate-300 bg-slate-50 shadow-sm">
+                  <div className="flex flex-col items-end gap-3">
+                    <button
+                      type="button"
+                      onClick={() => onDeleteEntry(entry.id)}
+                      className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                    >
+                      Delete
+                    </button>
+
+                    {entry.type === "pallets" && (
+                      <div className="inline-flex items-center rounded-lg border border-slate-300 bg-slate-50">
                         <button
                           type="button"
                           onClick={() => onAdjustPalletCount(entry.id, -1)}
-                          className="flex h-10 w-10 items-center justify-center rounded-l-xl text-lg font-semibold text-slate-700 transition hover:bg-slate-100 active:bg-slate-200"
+                          className="flex h-8 w-8 items-center justify-center text-sm font-semibold text-slate-700 transition hover:bg-slate-100 active:bg-slate-200"
                         >
                           −
                         </button>
 
-                        <div className="flex min-w-12 items-center justify-center px-3 text-sm font-semibold text-slate-900">
+                        <div className="flex min-w-10 items-center justify-center px-2 text-xs font-semibold text-slate-900">
                           {entry.palletCount ?? 1}
                         </div>
 
                         <button
                           type="button"
                           onClick={() => onAdjustPalletCount(entry.id, 1)}
-                          className="flex h-10 w-10 items-center justify-center rounded-r-xl text-lg font-semibold text-slate-700 transition hover:bg-slate-100 active:bg-slate-200"
+                          className="flex h-8 w-8 items-center justify-center text-sm font-semibold text-slate-700 transition hover:bg-slate-100 active:bg-slate-200"
                         >
                           +
                         </button>
                       </div>
-                    </div>
-                  )}
-
-                  <button
-                    type="button"
-                    onClick={() => onDeleteEntry(entry.id)}
-                    className="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
-                  >
-                    Delete
-                  </button>
+                    )}
+                  </div>
                 </div>
               </li>
             );
